@@ -1,26 +1,15 @@
 <script lang="ts">
-  let name = 'World';
+  let firstName = 'Zé';
+  let lastName = 'Lucas';
 
-  const changeName = (e: Event): void => {
-    let target = e.target as HTMLInputElement;
-    let inputValue = target.value;
-    name = inputValue;
-
-    if (!inputValue) {
-      name = 'World';
-    }
-  };
+  $: fullName = `${firstName} ${lastName}`;
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
+  <h1>Hello {fullName}!</h1>
 
-  <input type="text" on:input={changeName} value={name} />
-  <input type="text" bind:value={name} />
+  <input type="text" bind:value={firstName} />
+  <input type="text" bind:value={lastName} />
 </main>
 
 <style>
