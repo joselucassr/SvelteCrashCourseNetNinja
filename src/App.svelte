@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Modal from './Modal.svelte';
+
   let people = [
     { id: 1, name: 'Zé Lucas', stack: 'TS' },
     { id: 2, name: 'John Doe', stack: 'JS' },
@@ -8,18 +10,9 @@
   const removePerson = (id: number): void => {
     people = people.filter((person) => person.id !== id);
   };
-
-  let num = 5;
 </script>
 
-{#if num > 20}
-  <p>Number is greater than 20</p>
-{:else if num > 5}
-  <p>Number is greater than 5</p>
-{:else}
-  <p>Not greater than 5</p>
-{/if}
-
+<Modal />
 <main>
   {#each people as person (person.id)}
     <div>
