@@ -4,12 +4,17 @@
     { id: 2, name: 'John Doe', stack: 'JS' },
     { id: 3, name: 'Jane Doe', stack: 'Go' },
   ];
+
+  const removePerson = (id: number): void => {
+    people = people.filter((person) => person.id !== id);
+  };
 </script>
 
 <main>
   {#each people as person (person.id)}
     <div>
       <h4>{person.name} - {person.stack}</h4>
+      <button on:click={() => removePerson(person.id)}>Delete</button>
     </div>
   {:else}
     <h4>There are no people to show...</h4>
