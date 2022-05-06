@@ -1,18 +1,19 @@
 <script lang="ts">
-  let firstName = 'Zé';
-  let lastName = 'Lucas';
-
-  $: fullName = `${firstName} ${lastName}`;
-  $: {
-    console.log(fullName);
-  }
+  let people = [
+    { id: 1, name: 'Zé Lucas', stack: 'TS' },
+    { id: 2, name: 'John Doe', stack: 'JS' },
+    { id: 3, name: 'Jane Doe', stack: 'Go' },
+  ];
 </script>
 
 <main>
-  <h1>Hello {fullName}!</h1>
-
-  <input type="text" bind:value={firstName} />
-  <input type="text" bind:value={lastName} />
+  {#each people as person (person.id)}
+    <div>
+      <h4>{person.name} - {person.stack}</h4>
+    </div>
+  {:else}
+    <h4>There are no people to show...</h4>
+  {/each}
 </main>
 
 <style>
@@ -21,13 +22,6 @@
     padding: 1em;
     max-width: 240px;
     margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
   }
 
   @media (min-width: 640px) {
