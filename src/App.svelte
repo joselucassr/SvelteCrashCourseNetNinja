@@ -3,6 +3,9 @@
   let lastName = 'Lucas';
 
   $: fullName = `${firstName} ${lastName}`;
+  $: {
+    console.log(fullName);
+  }
 </script>
 
 <main>
