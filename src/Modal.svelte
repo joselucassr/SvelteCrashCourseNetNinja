@@ -1,11 +1,11 @@
 <script lang="ts">
   export let message: string;
   export let isPromo = false;
-  let showModal = true;
+  export let showModal = false;
 </script>
 
 {#if showModal}
-  <div class="backdrop" class:promo={isPromo}>
+  <div on:click class="backdrop" class:promo={isPromo}>
     <div class="modal">
       <p>{message}</p>
     </div>

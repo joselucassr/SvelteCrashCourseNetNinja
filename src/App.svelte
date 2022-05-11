@@ -1,6 +1,13 @@
 <script lang="ts">
   import Modal from './Modal.svelte';
 
+  let showModal = false;
+  let isPromo = false;
+
+  const toggleModal = (): void => {
+    showModal = !showModal;
+  };
+
   let people = [
     { id: 1, name: 'Zé Lucas', stack: 'TS' },
     { id: 2, name: 'John Doe', stack: 'JS' },
@@ -12,8 +19,15 @@
   };
 </script>
 
-<Modal message="Hey, I'm a prop value" isPromo={true} />
+<Modal
+  on:click={toggleModal}
+  message="Hey, I'm a prop value"
+  {isPromo}
+  {showModal}
+/>
 <main>
+  <button on:click={toggleModal}>Open Modal</button>
+
   {#each people as person (person.id)}
     <div>
       <h4>{person.name} - {person.stack}</h4>
