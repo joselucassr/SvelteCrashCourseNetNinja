@@ -11,8 +11,6 @@
 {#if showModal}
   <div on:click|self class="backdrop" class:promo={isPromo}>
     <div class="modal">
-      <slot name="title" />
-      <p>Hey There...</p>
       <slot />
     </div>
   </div>

@@ -20,15 +20,12 @@
 </script>
 
 <Modal on:click={toggleModal} {isPromo} {showModal}>
-  <!-- <h3>Add a new person</h3> -->
+  <h3>Add a new person</h3>
   <form action="">
     <input type="text" placeholder="name" />
     <input type="text" placeholder="belt-color" />
     <button>Add Person</button>
   </form>
-  <div slot="title">
-    <h3>Add a new person</h3>
-  </div>
 </Modal>
 <main>
   <button on:click|once={toggleModal}>Open Modal</button>
