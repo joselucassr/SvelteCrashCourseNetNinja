@@ -4,7 +4,6 @@
   // preventDefault - prevent the default action (run e.preventDefault())
   // self - only fires the event if the clicked element is the target
 
-  export let message = 'Default message';
   export let isPromo = false;
   export let showModal = false;
 </script>
@@ -12,7 +11,9 @@
 {#if showModal}
   <div on:click|self class="backdrop" class:promo={isPromo}>
     <div class="modal">
-      <p>{message}</p>
+      <slot name="title" />
+      <p>Hey There...</p>
+      <slot />
     </div>
   </div>
 {/if}
