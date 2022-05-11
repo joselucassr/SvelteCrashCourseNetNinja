@@ -1,11 +1,16 @@
 <script lang="ts">
-  export let message: string;
+  // Common event modifiers:
+  // once - makes sure the event can only fire once (removes handler)
+  // preventDefault - prevent the default action (run e.preventDefault())
+  // self - only fires the event if the clicked element is the target
+
+  export let message = 'Default message';
   export let isPromo = false;
   export let showModal = false;
 </script>
 
 {#if showModal}
-  <div on:click class="backdrop" class:promo={isPromo}>
+  <div on:click|self class="backdrop" class:promo={isPromo}>
     <div class="modal">
       <p>{message}</p>
     </div>
