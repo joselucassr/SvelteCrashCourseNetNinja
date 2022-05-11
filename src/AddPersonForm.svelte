@@ -1,11 +1,25 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+
+  import type { IPerson } from './types';
+
+  let dispatch = createEventDispatcher();
+
   let name: string;
-  let beltColor: string;
+  let stack: string;
   let age: number;
   let skills: string[] = [];
 
   const handdleSubmit = (): void => {
-    console.log(name, beltColor, age, skills);
+    const person: IPerson = {
+      name,
+      stack,
+      age,
+      skills,
+      id: Math.random(),
+    };
+
+    dispatch('addPerson', person);
   };
 </script>
 
@@ -15,22 +29,23 @@
 
   <strong>Skills:</strong>
   <label>
-    <input type="checkbox" bind:group={skills} value="fighting" /> Fighting
+    <input type="checkbox" bind:group={skills} value="front-end" /> Front-end
   </label>
   <label>
-    <input type="checkbox" bind:group={skills} value="sneaking" /> Sneaking
+    <input type="checkbox" bind:group={skills} value="back-end" /> Back-end
   </label>
   <label>
-    <input type="checkbox" bind:group={skills} value="running" /> Running
+    <input type="checkbox" bind:group={skills} value="computer science" /> Computer
+    science
   </label>
 
-  <strong>Belt Color</strong>
+  <strong>Stack</strong>
   <br />
-  <select bind:value={beltColor}>
-    <option value="black">black</option>
-    <option value="orange">orange</option>
-    <option value="brown">brown</option>
-    <option value="white">white</option>
+  <select bind:value={stack}>
+    <option value="TS">TS</option>
+    <option value="JS">JS</option>
+    <option value="PY">PY</option>
+    <option value="C#">C#</option>
   </select>
 
   <br />
